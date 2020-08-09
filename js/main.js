@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     //    Timer
 
-    let deadline = '2020-08-10'; //2020-08-10T16:10:00';
+    let deadline = '2020-08-10'; //2020-08-10T16:10:00' with hours & minutes & seconds
 
     function getTimeRemaining(endTime) {
 
