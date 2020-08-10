@@ -2,6 +2,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
     'use strict';
 
+
+    //  =====   Tabs   =====
+
     let tab = document.querySelectorAll('.info-header-tab'),
         info = document.querySelector('.info-header'),
         tabContent = document.querySelectorAll('.info-tabcontent');
@@ -39,9 +42,9 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    //    Timer
+    //  =====   Timer   =====
 
-    let deadline = 'Mon, 10 Aug 2020 00:00:00 +0500'; //2020-08-10T16:10:00' with hours & minutes & seconds
+    let deadline = 'Mon, 11 Aug 2020 00:00:00 +0500'; //2020-08-10T16:10:00' with hours & minutes & seconds
 
     function getTimeRemaining(endTime) {
 
@@ -74,7 +77,7 @@ window.addEventListener('DOMContentLoaded', function () {
             let time = getTimeRemaining(endTime);
 
             for (let key in time) {
-                if (time[key] < 10) {
+                if (time[key] < 10 && key !== 'total') {
                      time[key] = '0' + time[key];
                 }
             }
@@ -88,6 +91,8 @@ window.addEventListener('DOMContentLoaded', function () {
                 hours.textContent = '00';
                 minutes.textContent = '00';
                 seconds.textContent = '00';
+
+                // document.querySelector('.timer').style.display = 'none';
             }
 
         }
