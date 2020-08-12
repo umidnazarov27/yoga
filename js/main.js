@@ -44,7 +44,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     //  =====   Timer   =====
 
-    let deadline = 'Mon, 11 Aug 2020 00:00:00 +0500'; //2020-08-10T16:10:00' with hours & minutes & seconds
+    let deadline = 'Mon, 14 Aug 2020 00:00:00 +0500'; //2020-08-10T16:10:00' with hours & minutes & seconds
 
     function getTimeRemaining(endTime) {
 
@@ -100,4 +100,23 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
     setClock('timer', deadline);
+
+
+    // ===== Modal =====
+
+    let moreBtn = document.querySelector('.more'),
+        overlay = document.querySelector('.overlay'),
+        close = document.querySelector('.popup-close');
+
+    moreBtn.addEventListener('click', function () {
+        overlay.style.display = 'block';
+        this.classList.add('more-splash');
+        document.body.style.overflow = 'hidden';
+    });
+
+    close.addEventListener('click', function () {
+        overlay.style.display = 'none';
+        moreBtn.classList.remove('more-splash');
+        document.body.style.overflow = '';
+    })
 });
