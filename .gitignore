@@ -1,7 +1,8 @@
 #   ide files
 .idea/
-#   WebStorm files
 
 #   version
 __MACOSX/
-#   Mac OS version
+
+# config
+prepros.config
