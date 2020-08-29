@@ -23,7 +23,7 @@
 	margin: 0;
 	padding: 0;
 	outline: none;
-	font-family: "Roboto Slab";
+	font-family: "Roboto Slab", serif;
 }
 
 a {
@@ -115,6 +115,17 @@ header {
 			margin-top: 35px;
 			font-weight: bold;
 		}
+
+		@media(max-width: 992px) {
+			width: auto;
+			height: auto;
+		}
+
+		@media(max-width: 767px) {
+			&-descr {
+				font-size: 18px;
+			}
+		}
 	}
 }
 .content {
@@ -161,7 +172,7 @@ header {
 			transition: 0.3s;
 
 			@media(max-width: 767px) {
-				flex-direction: column;
+				flex-direction: column-reverse;
 			}
 			.description, .photo {
 				width: 50%;
@@ -256,6 +267,14 @@ header {
 				background-color: @main-color;
 				margin: 0 auto;
 				margin-top: 4px;
+			}
+
+			@media(max-width: 525px) {
+				font-size: 75px;
+			}
+
+			@media(max-width: 455px) {
+				font-size: 60px;
 			}
 		}
 	}
@@ -628,9 +647,4 @@ header {
 			}
 		}
 	}
-}
-
-
-@media(max-width: 767px) {
-
 }

@@ -17,7 +17,7 @@
   margin: 0;
   padding: 0;
   outline: none;
-  font-family: "Roboto Slab";
+  font-family: "Roboto Slab", serif;
 }
 a {
   color: inherit;
@@ -108,6 +108,17 @@ header ul li:before {
   margin-top: 35px;
   font-weight: bold;
 }
+@media (max-width: 992px) {
+  .main-block {
+    width: auto;
+    height: auto;
+  }
+}
+@media (max-width: 767px) {
+  .main-block-descr {
+    font-size: 18px;
+  }
+}
 .content {
   width: 100%;
   min-height: 3200px;
@@ -153,7 +164,7 @@ header ul li:before {
 }
 @media (max-width: 767px) {
   .content .info-tabcontent {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 }
 .content .info-tabcontent .description,
@@ -251,6 +262,16 @@ header ul li:before {
   background-color: #c78030;
   margin: 0 auto;
   margin-top: 4px;
+}
+@media (max-width: 525px) {
+  .content .timer-numbers {
+    font-size: 75px;
+  }
+}
+@media (max-width: 455px) {
+  .content .timer-numbers {
+    font-size: 60px;
+  }
 }
 .content .slider {
   margin-top: 150px;
