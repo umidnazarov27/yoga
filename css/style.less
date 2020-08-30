@@ -147,6 +147,29 @@ header {
         @media (max-width: 575px) {
             margin-top: 150px;
         }
+
+        @media(max-width: 437px) {
+            margin-top: 130px;
+            padding: 30px;
+            &-title {
+                font-size: 40px;
+            }
+        }
+
+        @media(max-width: 372px) {
+            padding: 20px;
+
+            &-title {
+                font-size: 34px;
+            }
+            &-descr {
+                font-size: 16px;
+            }
+        }
+    }
+
+    @media(max-width: 372px) {
+        height: 550px;
     }
 }
 
@@ -179,6 +202,11 @@ header {
                 justify-content: space-between;
             }
 
+            @media(max-width: 338px) {
+                flex-wrap: nowrap;
+                flex-direction: column;
+            }
+
             &-tab {
                 color: @main-color;
                 font-weight: bold;
@@ -203,7 +231,7 @@ header {
                 }
 
                 @media (max-width: 767px) {
-                    margin-bottom: 25px;
+                    margin-bottom: 30px;
                 }
             }
         }
@@ -345,6 +373,7 @@ header {
             &-title {
                 font-size: 28px;
             }
+
             &-action {
                 font-size: 20px;
             }
@@ -414,11 +443,11 @@ header {
                     transition: 1s;
                 }
 
-                @media(max-width: 767px) {
+                @media (max-width: 767px) {
                     width: 60px;
                 }
 
-                @media(max-width: 455px) {
+                @media (max-width: 455px) {
                     width: 45px;
                 }
             }
@@ -454,11 +483,11 @@ header {
                     transition: 1s;
                 }
 
-                @media(max-width: 767px) {
+                @media (max-width: 767px) {
                     width: 60px;
                 }
 
-                @media(max-width: 455px) {
+                @media (max-width: 455px) {
                     width: 45px;
                 }
             }
@@ -490,7 +519,6 @@ header {
         }
     }
 
-    //TODO add adaptive
     .counter {
         margin-top: 150px;
 
@@ -525,6 +553,7 @@ header {
                 width: 120px;
                 height: 60px;
                 padding: 10px;
+                margin-left: 30px;
                 color: @main-color;
                 background-color: transparent;
                 border: none;
@@ -538,6 +567,7 @@ header {
                 width: 230px;
                 height: 35px;
                 padding-left: 10px;
+                margin-left: 30px;
                 background-color: rgba(199, 126, 48, .8);
                 color: #fff;
                 border: none;
@@ -574,8 +604,7 @@ header {
 
     .more {
         display: block;
-        margin: 0 auto;
-        margin-top: 60px;
+        margin: 60px auto 0;
         width: 250px;
         height: 60px;
         background-color: transparent;
@@ -594,11 +623,9 @@ header {
         height: 400px;
         display: flex;
         background-color: @dark;
-        margin: 0 auto;
-        margin-top: 150px;
-        box-shadow: 0px 0px 30px rgba(0, 0, 0, .8);
+        margin: 150px auto 0;
+        box-shadow: 0 0 30px rgba(0, 0, 0, .8);
 
-        //TODO remove image in mobile version
         &-img {
             width: 50%;
 
@@ -606,11 +633,18 @@ header {
                 height: 550px;
                 transform: translateY(-13%);
             }
+
+            @media (max-width: 1199px) {
+                img {
+                    height: 510px;
+                    transform: translateY(-11%);
+                }
+            }
         }
 
         &-form {
             width: 50%;
-            padding-left: 40px;
+            padding-left: 50px;
 
             &-title {
                 margin-top: 30px;
@@ -653,6 +687,30 @@ header {
                         box-shadow: 0 0 10px @main-color;
                     }
                 }
+            }
+        }
+
+
+        @media (max-width: 991px) {
+            width: 100%;
+
+            &-img {
+
+                img {
+                    transform: translateY(-11%) translateX(-10%);
+                }
+            }
+        }
+
+        @media (max-width: 767px) {
+            &-img {
+                display: none;
+            }
+
+            &-form {
+                width: auto;
+                padding-left: 0;
+                margin: 0 auto;
             }
         }
     }
@@ -702,6 +760,8 @@ header {
     z-index: 3;
 
     .popup {
+
+        //TODO add adaptive
         position: fixed;
         z-index: 4;
         left: 50%;
