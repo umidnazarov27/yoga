@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     //  =====   Tabs   =====
 
-    let tab = document.querySelectorAll('.info-header-tab'),
+    let tab = document.querySelectorAll('.info-header-item-tab'),
         info = document.querySelector('.info-header'),
         tabContent = document.querySelectorAll('.info-tabcontent');
 
@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', function () {
     info.addEventListener('click', function (event) {
         let target = event.target;
 
-        if (target && target.classList.contains('info-header-tab')) {
+        if (target && target.classList.contains('info-header-item-tab')) {
             for (let i = 0; i < tab.length; i++) {
                 if (target === tab[i]) {
                     hideTabContent(0);
