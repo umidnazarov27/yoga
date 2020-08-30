@@ -116,7 +116,7 @@ window.addEventListener('DOMContentLoaded', function () {
     close.addEventListener('click', function () {
         overlay.style.display = 'none';
         moreBtn.classList.remove('more-splash');
-        document.body.style.overflow = '';
+        document.body.style.overflow = 'hidden';
     });
 
     descriptionBtn.addEventListener('click', function () {
@@ -124,9 +124,9 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     function overlayBlock() {
+        document.body.style.overflow = 'hidden';
         overlay.style.display = 'block';
         this.classList.add('more-splash');
-        document.body.style.overflow = 'hidden';
     }
 
     // ===== Form =====

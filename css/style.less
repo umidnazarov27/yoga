@@ -148,7 +148,7 @@ header {
             margin-top: 150px;
         }
 
-        @media(max-width: 437px) {
+        @media (max-width: 437px) {
             margin-top: 130px;
             padding: 30px;
             &-title {
@@ -156,19 +156,20 @@ header {
             }
         }
 
-        @media(max-width: 372px) {
+        @media (max-width: 372px) {
             padding: 20px;
 
             &-title {
                 font-size: 34px;
             }
+
             &-descr {
                 font-size: 16px;
             }
         }
     }
 
-    @media(max-width: 372px) {
+    @media (max-width: 372px) {
         height: 550px;
     }
 }
@@ -194,46 +195,64 @@ header {
             width: 100%;
             height: 50px;
             display: flex;
-            justify-content: space-around;
 
             @media (max-width: 767px) {
                 height: auto;
-                flex-wrap: wrap;
-                justify-content: space-between;
             }
 
-            @media(max-width: 338px) {
-                flex-wrap: nowrap;
+            @media (max-width: 370px) {
                 flex-direction: column;
             }
 
-            &-tab {
-                color: @main-color;
-                font-weight: bold;
-                font-size: 24px;
-                cursor: pointer;
-                padding: 0 15px;
+            &-item {
+                display: flex;
+                width: 100%;
+                justify-content: space-around;
 
-                &:after {
-                    content: '';
-                    display: block;
-                    width: 0;
-                    height: 3px;
-                    background-color: @main-color;
-                    margin-top: 4px;
-                    transition: 0.4s;
-                }
+                &-tab {
+                    color: @main-color;
+                    font-weight: bold;
+                    font-size: 24px;
+                    cursor: pointer;
+                    padding: 0 15px;
 
-                &:hover {
                     &:after {
-                        width: 60%;
+                        content: '';
+                        display: block;
+                        width: 0;
+                        height: 3px;
+                        background-color: @main-color;
+                        margin-top: 4px;
+                        transition: 0.4s;
                     }
+
+                    &:hover {
+                        &:after {
+                            width: 60%;
+                        }
+                    }
+
+                    @media (max-width: 767px) {
+                        margin-bottom: 30px;
+                    }
+
                 }
 
                 @media (max-width: 767px) {
-                    margin-bottom: 30px;
+                    flex-direction: column;
+
+                    &-tab {
+                        &:hover {
+                            &:after {
+                                width: 23%;
+                            }
+                        }
+                    }
+
                 }
+
             }
+
         }
 
         &-tabcontent {
