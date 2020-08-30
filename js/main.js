@@ -78,7 +78,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
             for (let key in time) {
                 if (time[key] < 10 && key !== 'total') {
-                     time[key] = '0' + time[key];
+                    time[key] = '0' + time[key];
                 }
             }
 
@@ -128,5 +128,48 @@ window.addEventListener('DOMContentLoaded', function () {
         this.classList.add('more-splash');
         document.body.style.overflow = 'hidden';
     }
+
+    // ===== Form =====
+
+    let message = {
+        loading: 'Loading...',
+        success: 'Thank, Soon we will contact with you',
+        failure: 'Error'
+    }
+
+    let form = document.querySelector('.main-form'),
+        input = form.getElementsByTagName('input'),
+        statusMessage = document.createElement('div');
+
+    statusMessage.classList.add('status');
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        form.appendChild(statusMessage);
+
+        let request = new XMLHttpRequest();
+
+        request.open('POST', 'server.php');
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        let formData = new FormData(form);
+        request.send(formData);
+
+        request.addEventListener('readystatechange', function () {
+            if (request.readyState < 4) {
+                statusMessage.innerHTML = message.loading;
+                alert(message.loading)
+            } else if (request.readyState === 4 && request.status === 200) {
+                statusMessage.innerHTML = message.success;
+                alert(message.success)
+            } else {
+                statusMessage.innerHTML = message.failure;
+                alert(message.failure)
+            }
+        });
+
+        //TODO finish
+
+    })
 
 });
