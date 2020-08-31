@@ -116,7 +116,7 @@ window.addEventListener('DOMContentLoaded', function () {
     close.addEventListener('click', function () {
         overlay.style.display = 'none';
         moreBtn.classList.remove('more-splash');
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = '';
     });
 
     descriptionBtn.addEventListener('click', function () {

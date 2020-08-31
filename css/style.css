@@ -771,3 +771,58 @@ header ul li:before {
 .overlay .popup-form__btn:hover {
   box-shadow: 0 0 10px #c78030;
 }
+@media (max-width: 800px) {
+  .overlay .popup {
+    width: 650px;
+  }
+  .overlay .popup-form {
+    padding: 35px 50px;
+  }
+  .overlay .popup-form__label {
+    text-align: left;
+    margin-top: 35px;
+  }
+  .overlay .popup-form__input {
+    width: 300px;
+  }
+}
+@media (max-width: 700px) {
+  .overlay .popup {
+    width: 600px;
+  }
+  .overlay .popup-form {
+    padding: 35px;
+  }
+  .overlay .popup-form__input {
+    width: 300px;
+  }
+}
+@media (max-width: 650px) {
+  .overlay .popup {
+    width: 550px;
+  }
+  .overlay .popup-form {
+    padding: 30px;
+  }
+  .overlay .popup-form__input {
+    width: auto;
+  }
+}
+@media (max-width: 600px) {
+  .overlay .popup {
+    top: 120px;
+    width: 400px;
+  }
+  .overlay .popup-form-header {
+    font-size: 24px;
+  }
+  .overlay .popup-form__label {
+    font-size: 18px;
+    text-align: center;
+  }
+  .overlay .popup-form__input {
+    height: 45px;
+    transform: translateX(-10%);
+    margin-bottom: 15px;
+  }
+}
