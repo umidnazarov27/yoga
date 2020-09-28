@@ -44,7 +44,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     //  =====   Timer   =====
 
-    let deadline = 'Mon, 1 Sep 2020 00:00:00 +0500'; //2020-08-10T16:10:00' with hours & minutes & seconds
+    let deadline = 'Mon, 28 Sep 2020 00:00:00 +0500'; //2020-08-10T16:10:00' with hours & minutes & seconds
 
     function getTimeRemaining(endTime) {
 
@@ -105,28 +105,40 @@ window.addEventListener('DOMContentLoaded', function () {
     // ===== Modal =====
 
     let moreBtn = document.querySelector('.more'),
-        descriptionBtn = document.querySelector('.description-btn'),
+        descriptionBtn = document.querySelectorAll('.description-btn'),
         overlay = document.querySelector('.overlay'),
         close = document.querySelector('.popup-close');
 
+    console.log(moreBtn);
+    console.log(descriptionBtn);
+
     moreBtn.addEventListener('click', function () {
-        overlayBlock();
+        overlayBlock(this);
     });
 
     close.addEventListener('click', function () {
         overlay.style.display = 'none';
-        moreBtn.classList.remove('more-splash');
+        if (moreBtn.classList.contains('more-splash')) {
+            moreBtn.classList.remove('more-splash');
+        } else {
+            for (let i = 0; i <= descriptionBtn.length; i++) {
+                if (descriptionBtn[i].classList.contains('more-splash')) {
+                    descriptionBtn[i].classList.remove('more-splash');
+                    break;
+                }
+            }
+        }
         document.body.style.overflow = '';
     });
 
-    descriptionBtn.addEventListener('click', function () {
-        overlayBlock();
-    });
+    descriptionBtn.forEach(elem => elem.addEventListener('click', function () {
+        overlayBlock(this);
+    }));
 
-    function overlayBlock() {
+    function overlayBlock(btn) {
         document.body.style.overflow = 'hidden';
         overlay.style.display = 'block';
-        this.classList.add('more-splash');
+        btn.classList.add('more-splash');
     }
 
     // ===== Form =====
@@ -135,7 +147,7 @@ window.addEventListener('DOMContentLoaded', function () {
         loading: 'Loading...',
         success: 'Thank, Soon we will contact with you',
         failure: 'Error'
-    }
+    };
 
     let form = document.querySelector('.main-form'),
         input = form.getElementsByTagName('input'),
