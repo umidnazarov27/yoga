@@ -44,7 +44,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     //  =====   Timer   =====
 
-    let deadline = 'Mon, 28 Sep 2020 00:00:00 +0500'; //2020-08-10T16:10:00' with hours & minutes & seconds
+    let deadline = 'Mon, 30 Sep 2020 00:00:00 +0500'; //2020-08-10T16:10:00' with hours & minutes & seconds
 
     function getTimeRemaining(endTime) {
 
@@ -108,7 +108,7 @@ window.addEventListener('DOMContentLoaded', function () {
         descriptionBtn = document.querySelectorAll('.description-btn'),
         overlay = document.querySelector('.overlay'),
         close = document.querySelector('.popup-close');
-        
+
     moreBtn.addEventListener('click', function () {
         overlayBlock(this);
     });
@@ -138,6 +138,7 @@ window.addEventListener('DOMContentLoaded', function () {
         btn.classList.add('more-splash');
     }
 
+
     // ===== Form =====
 
     let message = {
@@ -147,38 +148,41 @@ window.addEventListener('DOMContentLoaded', function () {
     };
 
     let form = document.querySelector('.main-form'),
-        input = form.getElementsByTagName('input'),
-        statusMessage = document.createElement('div');
-
-    statusMessage.classList.add('status');
+        input = form.getElementsByTagName('input');
 
     form.addEventListener('submit', function (event) {
         event.preventDefault();
-        form.appendChild(statusMessage);
 
         let request = new XMLHttpRequest();
 
         request.open('POST', 'server.php');
-        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        // request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+
 
         let formData = new FormData(form);
-        request.send(formData);
+
+        let obj = {};
+        formData.forEach(function(value, key) {
+            obj[key] = value;
+        });
+
+        let json = JSON.stringify(obj);
+        request.send(json);
 
         request.addEventListener('readystatechange', function () {
             if (request.readyState < 4) {
-                statusMessage.innerHTML = message.loading;
-                alert(message.loading)
+                alert(message.loading);
             } else if (request.readyState === 4 && request.status === 200) {
-                statusMessage.innerHTML = message.success;
-                alert(message.success)
+                alert(message.success);
             } else {
-                statusMessage.innerHTML = message.failure;
-                alert(message.failure)
+                alert(message.failure);
             }
         });
 
-        //TODO finish
-
-    })
+        for (let j = 0; j < input.length; j++) {
+            input[j].value = '';
+        }
+    });
 
 });
