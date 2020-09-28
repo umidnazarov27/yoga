@@ -108,10 +108,7 @@ window.addEventListener('DOMContentLoaded', function () {
         descriptionBtn = document.querySelectorAll('.description-btn'),
         overlay = document.querySelector('.overlay'),
         close = document.querySelector('.popup-close');
-
-    console.log(moreBtn);
-    console.log(descriptionBtn);
-
+        
     moreBtn.addEventListener('click', function () {
         overlayBlock(this);
     });
