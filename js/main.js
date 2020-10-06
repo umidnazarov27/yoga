@@ -44,7 +44,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     //  =====   Timer   =====
 
-    let deadline = 'Mon, 30 Sep 2020 00:00:00 +0500'; //2020-08-10T16:10:00' with hours & minutes & seconds
+    let deadline = 'Mon, 8 Oct 2020 00:00:00 +0500'; //2020-08-10T16:10:00' with hours & minutes & seconds
 
     function getTimeRemaining(endTime) {
 
@@ -147,10 +147,18 @@ window.addEventListener('DOMContentLoaded', function () {
         failure: 'Error'
     };
 
-    let form = document.querySelector('.main-form'),
-        input = form.getElementsByTagName('input');
+    let popupForm = document.querySelector('.main-form'),
+        form = document.querySelector('#form');
+
+    popupForm.addEventListener('submit', function (event) {
+        sendForm(event, this);
+    });
 
     form.addEventListener('submit', function (event) {
+        sendForm(event, this);
+    });
+
+    function sendForm(event, thisForm) {
         event.preventDefault();
 
         let request = new XMLHttpRequest();
@@ -159,11 +167,10 @@ window.addEventListener('DOMContentLoaded', function () {
         // request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
-
-        let formData = new FormData(form);
+        let formData = new FormData(thisForm);
 
         let obj = {};
-        formData.forEach(function(value, key) {
+        formData.forEach(function (value, key) {
             obj[key] = value;
         });
 
@@ -180,9 +187,11 @@ window.addEventListener('DOMContentLoaded', function () {
             }
         });
 
+        let input = thisForm.getElementsByTagName('input');
         for (let j = 0; j < input.length; j++) {
             input[j].value = '';
         }
-    });
+    }
+
 
 });

@@ -6,6 +6,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700&amp;subset=cyrillic-ext"
           rel="stylesheet">
+    <link rel="shortcut icon" href="icons/yoga.jpeg" type="image/png">
     <link rel="stylesheet" href="css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -203,8 +204,8 @@
                     Мы с вами свяжемся
                 </div>
                 <form id="form">
-                    <input required type="email" placeholder="Ваша почта">
-                    <input required type="tel" placeholder="Ваш телефон">
+                    <input required type="email" name="email" id="email" placeholder="Ваша почта">
+                    <input required type="tel" name="phone" id="form-phone"  placeholder="Ваш телефон">
                     <button type="submit">Отправить</button>
                 </form>
             </div>
@@ -249,10 +250,10 @@
                 <div class="popup-form-header">
                     Узнайте больше о своём отдыхе
                 </div>
-                <label class="popup-form__label" for="phone">
+                <label class="popup-form__label" for="popup-form">
                     Введите ваш номер телефона:
                 </label>
-                <input class="popup-form__input" name="phone" id="phone" type="tel" required
+                <input class="popup-form__input" name="phone" id="popup-form" type="tel" required
                        placeholder="+7(978) 973 33 45">
                 <button class="button popup-form__btn">
                     Оставить заявку!
