@@ -178,9 +178,7 @@ window.addEventListener('DOMContentLoaded', function () {
         request.send(json);
 
         request.addEventListener('readystatechange', function () {
-            if (request.readyState < 4) {
-                alert(message.loading);
-            } else if (request.readyState === 4 && request.status === 200) {
+            if (request.readyState === 4 && request.status === 200) {
                 alert(message.success);
             } else {
                 alert(message.failure);
@@ -192,6 +190,5 @@ window.addEventListener('DOMContentLoaded', function () {
             input[j].value = '';
         }
     }
-
 
 });
