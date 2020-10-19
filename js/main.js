@@ -44,7 +44,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     //  =====   Timer   =====
 
-    let deadline = 'Mon, 8 Oct 2020 00:00:00 +0500'; //2020-08-10T16:10:00' with hours & minutes & seconds
+    let deadline = 'Mon, 17 Oct 2020 00:00:00 +0500'; //2020-08-10T16:10:00' with hours & minutes & seconds
 
     function getTimeRemaining(endTime) {
 
@@ -158,37 +158,72 @@ window.addEventListener('DOMContentLoaded', function () {
         sendForm(event, this);
     });
 
-    function sendForm(event, thisForm) {
+    function sendForm(event, elem) {
         event.preventDefault();
 
-        let request = new XMLHttpRequest();
-
-        request.open('POST', 'server.php');
-        // request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-
-        let formData = new FormData(thisForm);
+        let formData = new FormData(elem);
+        let input = elem.getElementsByTagName('input');
 
         let obj = {};
         formData.forEach(function (value, key) {
             obj[key] = value;
         });
-
         let json = JSON.stringify(obj);
-        request.send(json);
+        //
+        // let request = new XMLHttpRequest();
+        //
+        // request.open('POST', 'server.php');
+        // // request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        // request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        //
+        // let formData = new FormData(elem);
+        //
+        // let obj = {};
+        // formData.forEach(function (value, key) {
+        //     obj[key] = value;
+        // });
+        //
+        // let json = JSON.stringify(obj);
+        // request.send(json);
+        //
+        // request.addEventListener('readystatechange', function () {
+        //     if (request.readyState === 4 && request.status === 200) {
+        //         alert(message.success);
+        //     } else {
+        //         alert(message.failure);
+        //     }
+        // });
 
-        request.addEventListener('readystatechange', function () {
-            if (request.readyState === 4 && request.status === 200) {
-                alert(message.success);
-            } else {
-                alert(message.failure);
-            }
-        });
+        function postData(data) {
+            return new Promise((resolve, reject) => {
+                let request = new XMLHttpRequest();
+                request.open('POST', 'server.php');
+                request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
-        let input = thisForm.getElementsByTagName('input');
-        for (let j = 0; j < input.length; j++) {
-            input[j].value = '';
+                request.addEventListener('readystatechange', () => {
+                    if (request.readyState === 4 || request.status === 200) {
+                        resolve()
+                    } else {
+                        reject()
+                    }
+                });
+
+                request.send(data);
+            })
+
         }
+
+        function clearInput() {
+            for (let i = 0; i < input.length; i++) {
+                input[i].value = ''
+            }
+        }
+
+        postData(json)
+            .then(() => alert(message.success))
+            .catch(() => alert(message.failure))
+            .then(clearInput)
+
     }
 
 });
