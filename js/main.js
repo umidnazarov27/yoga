@@ -266,9 +266,7 @@ window.addEventListener('DOMContentLoaded', function () {
     place.addEventListener('change', () => displayTotalValue(calcTotal()))
 
     function calcTotal() {
-        if (daysSum !== 0 && personSum !== 0)
-            return ((daysSum + personSum) * 4000) * place.options[place.selectedIndex].value
-        return 0
+        return daysSum !== 0 && personSum !== 0 ?((daysSum + personSum) * 4000) * place.options[place.selectedIndex].value : 0
     }
 
     function displayTotalValue(a) {
