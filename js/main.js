@@ -2,7 +2,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
     'use strict';
 
-
     //  =====   Tabs   =====
 
     let tab = document.querySelectorAll('.info-header-item-tab'),
@@ -44,7 +43,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     //  =====   Timer   =====
 
-    let deadline = 'Mon, 17 Oct 2020 00:00:00 +0500'; //2020-08-10T16:10:00' with hours & minutes & seconds
+    let deadline = 'Mon, 31 Oct 2020 00:00:00 +0500'; //2020-08-10T16:10:00' with hours & minutes & seconds
 
     function getTimeRemaining(endTime) {
 
@@ -163,36 +162,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
         let formData = new FormData(elem);
         let input = elem.getElementsByTagName('input');
-
         let obj = {};
         formData.forEach(function (value, key) {
             obj[key] = value;
         });
         let json = JSON.stringify(obj);
-        //
-        // let request = new XMLHttpRequest();
-        //
-        // request.open('POST', 'server.php');
-        // // request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        // request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-        //
-        // let formData = new FormData(elem);
-        //
-        // let obj = {};
-        // formData.forEach(function (value, key) {
-        //     obj[key] = value;
-        // });
-        //
-        // let json = JSON.stringify(obj);
-        // request.send(json);
-        //
-        // request.addEventListener('readystatechange', function () {
-        //     if (request.readyState === 4 && request.status === 200) {
-        //         alert(message.success);
-        //     } else {
-        //         alert(message.failure);
-        //     }
-        // });
 
         function postData(data) {
             return new Promise((resolve, reject) => {
@@ -207,7 +181,6 @@ window.addEventListener('DOMContentLoaded', function () {
                         reject()
                     }
                 });
-
                 request.send(data);
             })
 
@@ -223,7 +196,83 @@ window.addEventListener('DOMContentLoaded', function () {
             .then(() => alert(message.success))
             .catch(() => alert(message.failure))
             .then(clearInput)
+    }
 
+    //  =====   Slider   =====
+
+    let slideIndex = 1,
+        slides = document.querySelectorAll('.slider-item'),
+        prev = document.querySelector('.prev'),
+        next = document.querySelector('.next'),
+        dotsWrap = document.querySelector('.slider-dots'),
+        dots = document.querySelectorAll('.dot');
+
+    showSlides(slideIndex)
+
+    function showSlides(n) {
+        if (n > slides.length)
+            slideIndex = 1
+        if (n < 1)
+            slideIndex = slides.length
+
+        slides.forEach(item => item.style.display = 'none')
+        dots.forEach(item => item.classList.remove('dot-active'))
+        slides[slideIndex - 1].style.display = 'block'
+        dots[slideIndex - 1].classList.add('dot-active')
+    }
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n)
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n)
+    }
+
+    prev.addEventListener('click', () => plusSlides(-1))
+    next.addEventListener('click', () => plusSlides(1))
+
+    dotsWrap.addEventListener('click', event => {
+        for (let i = 0; i <= dots.length; i++) {
+            if (event.target.classList.contains('dot') &&
+                event.target === dots[i - 1])
+                currentSlide(i)
+        }
+    })
+
+    //  =====   Calc   =====
+
+    let person = document.querySelectorAll('.counter-block-input')[0],
+        restDays = document.querySelectorAll('.counter-block-input')[1],
+        place = document.getElementById('select'),
+        totalValue = document.getElementById('total'),
+        personSum = 0,
+        daysSum = 0,
+        total = 0;
+
+    person.addEventListener('input', function () {
+        personSum = +this.value
+        total = calcTotal()
+        displayTotalValue(total)
+
+    })
+
+    restDays.addEventListener('input', function () {
+        daysSum = +this.value
+        total = calcTotal()
+        displayTotalValue(total)
+    })
+
+    place.addEventListener('change', () => displayTotalValue(calcTotal()))
+
+    function calcTotal() {
+        if (daysSum !== 0 && personSum !== 0)
+            return ((daysSum + personSum) * 4000) * place.options[place.selectedIndex].value
+        return 0
+    }
+
+    function displayTotalValue(a) {
+        totalValue.innerHTML = a
     }
 
 });
