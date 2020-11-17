@@ -8,3 +8,6 @@ __MACOSX/
 prepros.config
 
 data.json
+
+# node mudules
+node_modules/
